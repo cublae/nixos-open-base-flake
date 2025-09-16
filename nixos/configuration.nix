@@ -36,6 +36,11 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services = {
+    desktopManager.gnome.enable = true;
+ 	  displayManager.gdm = {
+  		enable = true;
+  		wayland = true;
+  	};
     dbus.enable = true;
     gvfs.enable = true;
     resolved.enable = true; # needed for nekotay tun mode correct work
@@ -46,6 +51,8 @@
       excludePackages = [ pkgs.xterm ];
     };
   };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs = {
     dconf.enable = true;
